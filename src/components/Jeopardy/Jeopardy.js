@@ -9,7 +9,7 @@ class Jeopardy extends Component {
         this.client = new JeopardyService();
         this.state = {
             data: {},
-            score: 0
+            score: 0,
         }
     }
     //get a new random question from the API and add it to the data object in state
@@ -20,7 +20,6 @@ class Jeopardy extends Component {
             })
         })
     }
-
     handleAnswer = () => {
         let score = this.score;
         if (this.state.answer.toLowerCase() === this.state.data.answer.toLowerCase()) {
@@ -28,15 +27,12 @@ class Jeopardy extends Component {
         } else {
             score -= this.state.data.value;
         }
-
         this.setState({
             score,
-            answer: ''
+            answer: ""
         })
         this.getNewQuestion()
     }
-
-
     handleChange = (event) => {
         let data = { ...this.state };
         data[event.target.name] = event.target.value;
@@ -49,7 +45,6 @@ class Jeopardy extends Component {
     }
     //display the results on the screen
     render() {
-        
         return (
            <JeopardyPage
             category={this.state.data.category && this.state.data.category.title}
